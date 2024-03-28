@@ -83,17 +83,14 @@ const CanvasBoard = ({height,width})=>{
       );
      
 
-
-     
-
     useEffect(()=>{
  
        setcontext(
         canvasRef.current&& canvasRef.current.getContext('2d')
        );
        clearBoard(context); 
-       drawObject(context, snake, "#91C483"); //Draws snake at the required position
-       drawObject(context, [pos], "#91C483");
+       drawObject(context, snake, "pink"); //Draws snake at the required position
+       drawObject(context, [pos], "lightgreen",true);
 
        if(snake[0].x === pos?.x && snake[0].y === pos?.y){
         console.log("consumed!!")
