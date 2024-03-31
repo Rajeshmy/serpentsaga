@@ -6,6 +6,7 @@ import { hasSnakeCollided } from '../utilities/snakecollidepredict';
 import { useDispatch } from 'react-redux';
 import { Actions,makeMove,endGame,resetGame} from '../store/actions/actions';
 import { increaseSnake,gameReset } from "../store/slices/counterslice";
+import { setdifficulty } from '../utilities/difficulty';
 
 const CanvasBoard = ({height,width})=>{
 
@@ -89,7 +90,7 @@ const CanvasBoard = ({height,width})=>{
         canvasRef.current&& canvasRef.current.getContext('2d')
        );
        clearBoard(context); 
-       drawObject(context, snake, "pink"); //Draws snake at the required position
+       drawObject(context, snake, "#96a0aa"); //Draws snake at the required position
        drawObject(context, [pos], "lightgreen",true);
 
        if(snake[0].x === pos?.x && snake[0].y === pos?.y){
@@ -149,6 +150,7 @@ const CanvasBoard = ({height,width})=>{
           [generateRandomPosition(width - 20, height - 20)],
           "#676FA3"
         ); //Draws object randomly
+        //setdifficulty(150);
         window.addEventListener("keypress", handleKeyEvents);
 
       },[])
@@ -156,9 +158,9 @@ const CanvasBoard = ({height,width})=>{
 
     return(
       <>
-      <canvas ref={canvasRef} style={{border: "3px solid black"}} height={height} width={width}/>
+      <canvas ref={canvasRef} style={{border: "1px solid black",boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.6)", backgroundColor:"#1a1110"}} height={height} width={width}/>
       <div> press "d" to start |   "a" to move left |   "d" to move right |  "w" to move up |   "s" to move down </div>
-      <button style={{backgroundColor:'lightblue',padding:3,borderRadius:4,borderWidth:1,borderColor:'grey',fontWeight: 'semiBold',color:'#A9A9A9'}}onClick={()=>{gameResetfunction()}} disabled={!gameended}>RESET</button>
+      <button style={{backgroundColor:'#ffd700',padding:2,borderRadius:4,fontWeight: 'bold',color:'black',boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.6)",marginBottom:"2%",marginTop:"10px"}}onClick={()=>{gameResetfunction()}} disabled={!gameended}>RESET</button>
       </>
     );
 };

@@ -10,6 +10,7 @@ let initialState = {
   ],
   disallowedDirection: "",
   score:0,
+  dificultylevel:150,
 };
 
 export const counterSlice = createSlice({
@@ -57,7 +58,12 @@ export const counterSlice = createSlice({
         state.score=0;
         state.disallowedDirection="";
         state.snake=initialState.snake;
-  },}
+  },
+  setdifficulty:(state,action)=>{
+  state.dificultylevel=action.payload?action.payload:150;
+  }
+
+}
 });
 
 export const { setSnake, setDisDirection,increaseSnake,gameReset } = counterSlice.actions;

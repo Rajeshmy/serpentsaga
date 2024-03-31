@@ -7,6 +7,7 @@ import {
 } from "redux-saga/effects";
 import { Actions } from "../actions/actions";
 import { setSnake,setDisDirection,increaseSnake } from "../slices/counterslice";
+import { difficulty } from "../../utilities/difficulty";
 const  {
     DOWN,
     ISnakeCoord,
@@ -51,7 +52,7 @@ const  {
         default:
           break;
       }
-      yield delay(150);
+      yield delay(difficulty);
     }
   }
   
